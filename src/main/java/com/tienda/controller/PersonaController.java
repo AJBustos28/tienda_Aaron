@@ -27,7 +27,7 @@ public class PersonaController {
         List<Persona> listaPersona = personaService.getAllPersona();
         model.addAttribute("titulo","Tabla Personas");
         model.addAttribute("personas", listaPersona);
-        return "personas";
+        return "persona";
     }
     
     @GetMapping("/personaN")
@@ -38,4 +38,9 @@ public class PersonaController {
         return "crear";
     }
     
+    @PostMapping("/save")
+    public String guardarPersona(@ModelAttribute Persona persona) {
+        personaService.savePersona(persona);
+        return "redirect:/persona";
+    }
 }
